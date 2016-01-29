@@ -1,0 +1,83 @@
+package JUnit;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
+//Begin main class
+public class Apples {
+
+    // main function in the apples class
+    public static void main(String[] args){
+
+        // Creation of new tuna object so that I can use the saying method within Tuna
+        Tuna tunaObject = new Tuna();
+
+        // Call to the saying method within the Tuna Class
+        tunaObject.saying();
+//------------------------------------------------------------------------------------------------------------------
+        //This is the stuff Brother Barney asked me to work on to pass off Junit
+        // Call private hashmap method cheesecake
+
+    //Creation of cheesecake object to access the cheesecake class
+    Cheesecake c1 = new Cheesecake();
+
+        //accessing my setter with the new cheesecake object I just created
+    c1.setCake();
+
+        //System.out.println(c1.cakeTypes.get("1"));
+        //Using a try catch block so that the program finishes without crashing.
+        try {
+            // Creating a new field to access my private hashmap in the cheesecake class
+            Field tempAccess = Cheesecake.class.getDeclaredField("cakeTypes");
+
+            //This line sets my private hashmap to accessible for a moment so that I can access it
+            tempAccess.setAccessible(true);
+
+
+            HashMap<String, String> test = (HashMap<String, String>) tempAccess.get(c1);
+            System.out.println(test.get("1"));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
+}//end of main function
+
+
+    // test function that returns an int
+    public int add(int firstNum, int secondNum){
+        int sum = firstNum + secondNum;
+        return sum;
+    }
+
+
+
+    public int subtract(int numOne, int numTwo){
+        int diff = numOne - numTwo;
+        return diff;
+    }
+
+    public String[] myArray(){
+        String arrayList[] = {"Jordan", "Emily", "Dane", "Olivia"};
+        return arrayList;
+    }
+
+    public boolean isFalse(int firstNum, int secondNum){
+        boolean result = firstNum > secondNum;
+        return result;
+    }
+
+    public void monkey() throws Exception{
+        if(10 < 9){
+            throw new Exception("My exception");
+        }else{
+            throw new Exception("My other exception!");
+        }
+    }
+
+
+
+
+}
