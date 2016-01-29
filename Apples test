@@ -1,0 +1,106 @@
+package JUnit;
+
+import org.junit.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
+
+
+public class ApplesTest {
+
+    private Apples appleObject = new Apples();
+
+
+    @Test
+    public void testMain()  {
+       //fail("This failed on purpose!");
+    }
+
+// This test compares what is expected in my add function to what I put in for the parameters
+    @Test
+    public void testAdd()  {
+        assertEquals(9, appleObject.add(2, 5),3);
+    }
+
+// Same as the previous test just as a subtraction problem
+    @Test
+    public void testSubtract()  {
+        assertEquals(4, appleObject.subtract(8, 2), 3);
+    }
+
+// This test compares two arrays and makes sure they are identical
+    @Test
+    public void testMyArray()  {
+        String classes[] = {"Jordan", "Emily", "Dane", "Olivia"};
+        assertArrayEquals(classes, appleObject.myArray());
+    }
+
+// This test takes a true statement and makes it false. Uses logic. False + False = true
+    @Test
+    public void testIsFalse() {
+        assertFalse(appleObject.isFalse(2, 6));
+    }
+
+// This test tests objects that are not initialized.
+    @Test
+    public void testNull() throws Exception {
+        Apples appleObjectNull = new Apples();
+        assertNotNull(appleObjectNull);
+    }
+
+
+    @Test
+    public void testMonkey(){
+        try{
+            appleObject.monkey();
+        }catch(Exception e){
+            e.printStackTrace();
+            //System.out.println("Hello Dolly!");
+        }
+    }
+
+    @Test
+    public void testNotSame(){
+        Apples unexpected = new Apples();
+        Apples expected = new Apples();
+        assertNotSame(unexpected, expected);
+    }
+
+    @Test
+    public void testIsNull(){
+        Apples nullObject = null;
+        assertNull(nullObject);
+    }
+
+    @Test
+    public void testSame(){
+        //Use this one to fail the test
+        Apples unexpected = new Apples();
+        Apples expected = new Apples();
+        assertSame(expected, expected);
+    }
+
+
+    @Test
+    public void testTrue(){
+        ArrayList<String> students = new ArrayList<>();
+        students.add("Jordan");
+        students.add("Frank");
+        students.add("Bob");
+
+        ArrayList<String> roster = new ArrayList<>();
+        roster.add("Frank");
+        roster.add("Bob");
+        roster.add("Jordan");
+        roster.add("Betty");
+
+        assertTrue(students.get(0) == roster.get(2));
+       // assertTrue("The ArrayList are not the same size.", students.size() == roster.size());
+    }
+
+    //more Create java bean Private hashmap. method to insert stuff. Take private method and temporarily make it public
+
+
+
+}
