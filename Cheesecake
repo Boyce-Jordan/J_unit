@@ -1,0 +1,17 @@
+package JUnit;
+
+import java.util.HashMap;
+
+public class Cheesecake {
+    private HashMap<String, String> cakeTypes = new HashMap<>();
+
+    public void setCake() {
+        cakeTypes.put("1", "Raspberry");
+        cakeTypes.put("2", "Blueberry");
+
+    }
+
+    public String getCake(){
+        return cakeTypes.get("2");
+    }
+}
